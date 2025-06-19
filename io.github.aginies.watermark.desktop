@@ -3,6 +3,7 @@ Name=Watermark App
 Name[fr]=Filigrane App
 Comment=An application to add watermarks to images
 Comment[fr]=Application pour ajouter des filigranes sur des images
+Comment[ru]=Добавление водяных знаков на изображения
 Exec=watermark_app
 Icon=io.github.aginies.watermark
 Terminal=false
