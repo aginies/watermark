@@ -42,7 +42,9 @@ trans:
 	xgettext --language=Python --keyword=_ -o locale/watermark_app_gtk_new.pot watermark_app_gtk.py
 	cp -av locale/watermark_app_gtk.pot locale/fr/LC_MESSAGES/watermark_app_gtk.po
 	cp -av locale/watermark_app_gtk.pot locale/es/LC_MESSAGES/watermark_app_gtk.po
+	cp -av locale/watermark_app_gtk.pot locale/ru/LC_MESSAGES/watermark_app_gtk.po
 
 trans2:
 	msgfmt locale/fr/LC_MESSAGES/watermark_app_gtk.po -o locale/fr/LC_MESSAGES/watermark_app_gtk.mo
 	msgfmt locale/es/LC_MESSAGES/watermark_app_gtk.po -o locale/es/LC_MESSAGES/watermark_app_gtk.mo
+	msgfmt locale/ru/LC_MESSAGES/watermark_app_gtk.po -o locale/ru/LC_MESSAGES/watermark_app_gtk.mo
