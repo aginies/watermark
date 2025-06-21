@@ -16,6 +16,7 @@ Cette application est utilisée pour lutter contre l'usurpation d'identité en s
 
 # Limitation
 
+Currently this is a single python script, There is a need to get this modular now, (this was ok for the first basic version but this is not more the case...). 
 This tool can only used **Truetype font**, bitmap one can not be selected or used.
 If your system can not display the font in the **GtkChooserDialog preview** (ie: it shows squares), the tool will not be able to use that font to watermark your image.
 This tool do not show any view if you export to PDF file.
@@ -98,7 +99,7 @@ To get a version with console debug, you need to remove the **--windowed** optio
 
 ## flathub app
 
-[![Flathub Version](https://img.shields.io/badge/watermark-4.0-blue)](https://flathub.org/apps/io.github.aginies.watermark)
+[![Flathub Version](https://img.shields.io/badge/watermark-4.1-blue)](https://flathub.org/apps/io.github.aginies.watermark)
 
 ### Stable version from source
 
@@ -122,6 +123,6 @@ For more information: https://docs.flathub.org/docs/for-app-authors/submission#b
 
 # TODO
 
-* have a modular app not a single script
+* have a modular app not a single script, to handle GUI part, conversion part, watermark part, etc...
 * show pdf files generated
 * perhaps many more stuff....
