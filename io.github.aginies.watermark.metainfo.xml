@@ -2,13 +2,13 @@
 <component type="desktop-application">
  <id>io.github.aginies.watermark</id>
  <branding>
-  <color type="primary" scheme_preference="light">#57e389</color>
+  <color type="primary" scheme_preference="light">#3a925c</color>
   <color type="primary" scheme_preference="dark">#613583</color>
 </branding>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-2.0+</project_license>
  <name>Watermark</name>
- <summary>Adding customized watermarks to images</summary>
+ <summary>Custom watermark on images</summary>
  <description>
   <p>
    Add customized watermarks to any images, helping to secure official documents and combat identity theft.
