@@ -41,7 +41,7 @@ Python GTK version.
 * List of selected images
 * Multiple Image viewer
 * Default save directory is that of the first image
-* Languages: EN, FR, ES
+* Languages: EN, FR, ES, NL, RU
 * Expert mode: 
   * font selection
   * font color choice or random
