@@ -20,6 +20,7 @@ Currently this is a single python script, There is a need to get this modular no
 This tool can only used **Truetype font**, bitmap one can not be selected or used.
 If your system can not display the font in the **GtkChooserDialog preview** (ie: it shows squares), the tool will not be able to use that font to watermark your image.
 This tool do not show any view if you export to PDF file.
+This is only available for Linux and Windows now, a MacOS version should be possible.
 
 # Contribute
 
@@ -36,7 +37,7 @@ This app is in Python GTK3, and is compatible with very old python3.6.
 
 # watermark_app_gtk.py
 
-Python GTK version.
+Python GTK3 version.
 * Add watermark to multiple images
 * List of selected images
 * Multiple Image viewer
@@ -54,7 +55,7 @@ Python GTK version.
   * Image resize
 
 **FR**:
-Script en Python GTK.
+Script en Python GTK3.
 * Ajout filigrane sur de multiple images
 * Liste des images selectionnées
 * Visualiseur d'images
@@ -112,7 +113,7 @@ To run latest tarball version:
 make run
 ```
 
-### Devel version
+### Devel version (testing)
 
 To build local files
 ```
@@ -124,5 +125,7 @@ For more information: https://docs.flathub.org/docs/for-app-authors/submission#b
 # TODO
 
 * have a modular app not a single script, to handle GUI part, conversion part, watermark part, etc...
-* show pdf files generated
+* add the technical info of the watermark configuration in the image viewer
+* save and restore configuration, or propose default template for light or dark image
+* show pdf files generated (using poppler)
 * perhaps many more stuff....
