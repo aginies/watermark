@@ -22,20 +22,20 @@
  <launchable type="desktop-id">io.github.aginies.watermark.desktop</launchable>
  <screenshots>
   <screenshot type="default">
-   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.1/images/example.jpg</image>
+   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.2/images/example.jpg</image>
    <caption>Main application</caption>
   </screenshot>
   <screenshot>
-   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.1/images/font_chooser.jpg</image>
+   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.2/images/font_chooser.jpg</image>
    <caption>Font Chooser</caption>
   </screenshot>
   <screenshot>
-   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.1/images/color_chooser.jpg</image>
+   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.2/images/color_chooser.jpg</image>
    <caption>Color Chooser</caption>
   </screenshot>
  </screenshots>
  <releases>
-  <release version="4.1" date="2025-06-17">
+  <release version="4.2" date="2025-06-23">
    <description>
     <p>Main features</p>
     <ul>
@@ -44,7 +44,7 @@
      <li>Expert mode: font selection, font color choice or random, font transparency,
      text angle, watermark density, optional Date + Hour, filename prefix, PDF or JPG output,
      JPG compression level, image resize</li>
-     <li>Supported languages: FR, EN, ES</li>
+     <li>Supported languages: FR, EN, ES, NL, RU</li>
     </ul>
    </description>
   </release>
