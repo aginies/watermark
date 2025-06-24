@@ -1,4 +1,7 @@
 .PHONY: build
+LANGS = fr es nl ru
+BASE_PATH = locale
+POT_FILE = $(BASE_PATH)/watermark_app_gtk.pot
 
 build:
 	flatpak install -y flathub org.flatpak.Builder
@@ -40,15 +43,14 @@ json:
 
 trans:
 	xgettext --language=Python --keyword=_ -o locale/watermark_app_gtk_new.pot watermark_app_gtk.py
-	echo "Adjust headers of locale/watermark_app_gtk_new.pot and copy it to watermark_app_gtk.py"
+	echo "Adjust headers of locale/watermark_app_gtk_new.pot and copy it to watermark_app_gtk.pot"
 
-trans2:
-	cp -av locale/watermark_app_gtk.pot locale/fr/LC_MESSAGES/watermark_app_gtk.po
-	cp -av locale/watermark_app_gtk.pot locale/es/LC_MESSAGES/watermark_app_gtk.po
-	cp -av locale/watermark_app_gtk.pot locale/nl/LC_MESSAGES/watermark_app_gtk.po
-	cp -av locale/watermark_app_gtk.pot locale/ru/LC_MESSAGES/watermark_app_gtk.po
+update_po: $(LANGS)
 
-trans3:
+$(LANGS):
+	msgmerge --update $(BASE_PATH)/$@/LC_MESSAGES/watermark_app_gtk.po $(POT_FILE)
+
+convert_po:
 	msgfmt locale/fr/LC_MESSAGES/watermark_app_gtk.po -o locale/fr/LC_MESSAGES/watermark_app_gtk.mo
 	msgfmt locale/es/LC_MESSAGES/watermark_app_gtk.po -o locale/es/LC_MESSAGES/watermark_app_gtk.mo
 	msgfmt locale/es/LC_MESSAGES/watermark_app_gtk.po -o locale/nl/LC_MESSAGES/watermark_app_gtk.mo
