@@ -23,7 +23,7 @@
  <launchable type="desktop-id">io.github.aginies.watermark.desktop</launchable>
  <screenshots>
   <screenshot type="default">
-   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.2/images/main_exprt.jpg</image>
+   <image type="source">https://raw.githubusercontent.com/aginies/watermark/refs/tags/4.2/images/main_expert.jpg</image>
    <caption>Main application</caption>
   </screenshot>
   <screenshot>

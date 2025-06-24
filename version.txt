@@ -18,11 +18,11 @@ VSVersionInfo(
           [
             StringStruct(u'CompanyName', u'Guibo.com'),
             StringStruct(u'FileDescription', u'Watermark App'),
-            StringStruct(u'FileVersion', u'4.2'),
+            StringStruct(u'FileVersion', u'4.3'),
             StringStruct(u'InternalName', u'Watermark'),
             StringStruct(u'LegalCopyright', u'GPL2'),
             StringStruct(u'ProductName', u'Watermark guibo.com'),
-            StringStruct(u'ProductVersion', u'4.2'),
+            StringStruct(u'ProductVersion', u'4.3'),
             StringStruct(u'ApplicationName', u'watermark.exe'),
 	    StringStruct(u'Author', u'Antoine Ginies')
           ]
