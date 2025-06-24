@@ -230,14 +230,14 @@ class ImageViewerWindow(Gtk.Window):
             try:
                 # Copy the current image to the selected location
                 source_file = Gio.File.new_for_path(current_image_path)
-                destination_file = Gio.File.new_for_path(current_image_path)
+                destination_file = Gio.File.new_for_path(dialog.get_filename())
                 source_file.copy(
                     destination_file,
                     Gio.FileCopyFlags.OVERWRITE,
                     None,
                     None
                 )
-                print(f"Image saved to {current_image_path}")
+                print("Image saved to:", dialog.get_filename())
             except Exception as err:
                 print(f"Error saving image: {err}")
 
