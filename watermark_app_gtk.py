@@ -15,7 +15,17 @@ from PIL import Image, ImageDraw, ImageFont
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf, Gio, Pango, GLib, Gdk
 
-gettext.install('watermark_app_gtk', localedir='locale')
+def is_running_under_flatpak():
+    return 'FLATPAK_ID' in os.environ
+
+if is_running_under_flatpak():
+    ldir = "/app/share/locale"
+else:
+    if not os.path.exists("locale"):
+        ldir = "/usr/share/locale"
+    else:
+        ldir = "locale"
+gettext.install('watermark_app_gtk', localedir=ldir)
 
 class ProgressDialog(Gtk.Dialog):
     def __init__(self, parent, title, max_value):
@@ -369,7 +379,7 @@ class WatermarkApp(Gtk.Window):
         button_size_group.add_widget(self.output_filechooser_button)
         output_hbox.pack_start(output_label, False, False, 12)
         output_hbox.pack_end(self.output_filechooser_button, False, False, 12)
-        if self.is_running_under_flatpak():
+        if is_running_under_flatpak():
             print("Runing under a flatpak sandbox environement")
             with open('DONT_SAVE_HERE', 'w') as f:
                 f.write('This is a reminder not to save files here.')
@@ -527,9 +537,6 @@ class WatermarkApp(Gtk.Window):
         if platform.system() == 'Windows':
             pyi_splash.close()
 
-    def is_running_under_flatpak(self):
-        return 'FLATPAK_ID' in os.environ
-
     def on_pdf_toggled(self, button):
         if button.get_active():
             self.compression_scale.set_sensitive(False)
@@ -565,7 +572,7 @@ class WatermarkApp(Gtk.Window):
             self.default_font_description = Pango.FontDescription("DejaVu Sans 20") #vtks Rude Metal shadow 12") #DejaVu Sans 20")
             font_desc_str = self.default_font_description.to_string()
             font_path = self.find_font_file(self.default_font_description)
-            #if self.is_running_under_flatpak():
+            #if is_running_under_flatpak():
             #    # Dont select default font in sanbox env, force user select one
             #    print("Dont select default font in sanbox env, force user select one")
             #    self.font_chooser_button.set_label(_("No font selected"))
@@ -829,7 +836,7 @@ class WatermarkApp(Gtk.Window):
 
     def about_dialog(self, widget):
         """ Create a custom dialog window for the About section with a clickable link"""
-        about_window = Gtk.Window(title=_("Watermark App Version 4.4"))
+        about_window = Gtk.Window(title=_("Watermark App Version 4.5"))
         about_window.set_default_size(400, 200)
         about_window.set_position(Gtk.WindowPosition.CENTER)
 
@@ -963,11 +970,11 @@ class WatermarkApp(Gtk.Window):
 
         if not self.output_folder_path:
             self.default_output_dir = os.path.dirname(self.selected_files_path[0])
-            if not self.is_running_under_flatpak():
+            if not is_running_under_flatpak():
                 self.output_filechooser_button.set_current_folder(self.default_output_dir)
         else:
             self.default_output_dir = self.output_folder_path
-            if not self.is_running_under_flatpak():
+            if not is_running_under_flatpak():
                 self.output_filechooser_button.set_current_folder(self.output_folder_path)
 
         win = Gtk.Window()

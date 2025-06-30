@@ -101,8 +101,8 @@ To get a version with console debug, you need to remove the **--windowed** optio
 
 ## flathub app
 
-[![Flathub Version](https://img.shields.io/badge/watermark-4.4-blue)](https://flathub.org/apps/io.github.aginies.watermark)
-[![Windows Version](https://img.shields.io/badge/watermark-4.4-blue)](https://github.com/aginies/watermark/releases/download/4.4/watermark_4.4.exe.zip)
+[![Flathub Version](https://img.shields.io/badge/watermark-4.5-blue)](https://flathub.org/apps/io.github.aginies.watermark)
+[![Windows Version](https://img.shields.io/badge/watermark-4.5-blue)](https://github.com/aginies/watermark/releases/download/4.4/watermark_4.4.exe.zip)
 
 ### Stable version from source
 

@@ -22,5 +22,5 @@ modules:
       - install -Dm0644 io.github.aginies.watermark.metainfo.xml /app/share/metainfo/
     sources:
       - type: archive
-        url: https://github.com/aginies/watermark/archive/refs/tags/4.3.tar.gz
+        url: https://github.com/aginies/watermark/archive/refs/tags/4.5.tar.gz
         sha256: 3144e5c5fa9853f632b3bce9594b4cd5cb413fa721c512d84024f04c82b5c9ef

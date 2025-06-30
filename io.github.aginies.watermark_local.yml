@@ -17,9 +17,9 @@ modules:
       - install -Dm755 watermark_app_gtk.py /app/bin/watermark_app
       - install -Dm644 io.github.aginies.watermark.png /app/share/icons/hicolor/256x256/apps/io.github.aginies.watermark.png
       - install -Dm644 io.github.aginies.watermark.desktop /app/share/applications/io.github.aginies.watermark.desktop
-      - cp -a locale /app/share/
+      - cp -av locale /app/share/
       - mkdir /app/share/metainfo/
-      - cp -a io.github.aginies.watermark.metainfo.xml /app/share/metainfo/
+      - cp -av io.github.aginies.watermark.metainfo.xml /app/share/metainfo/
     sources:
       - type: dir
         path: .
