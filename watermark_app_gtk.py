@@ -10,7 +10,9 @@ import gi
 import re
 if platform.system() == 'Windows':
     import winreg
-    import pyi_splash
+    if getattr(sys, 'frozen', False):
+        import pyi_splash
+
 from PIL import Image, ImageDraw, ImageFont
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf, Gio, Pango, GLib, Gdk
@@ -18,14 +20,29 @@ from gi.repository import Gtk, GdkPixbuf, Gio, Pango, GLib, Gdk
 def is_running_under_flatpak():
     return 'FLATPAK_ID' in os.environ
 
-if is_running_under_flatpak():
+if platform.system() == 'Windows':
+    key_path = r"Control Panel\International"
+    with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path) as key:
+        locale_name, reg_type = winreg.QueryValueEx(key, "LocaleName")
+        lang_code = locale_name.split('-')[0].lower()
+        print(f"Windows: Detected language from registry: {lang_code} (full tag: {locale_name})")
+        ldir = sys._MEIPASS + "/share/locale"
+elif is_running_under_flatpak():
     ldir = "/app/share/locale"
 else:
     if not os.path.exists("locale"):
+        # Installed on the system
         ldir = "/usr/share/locale"
     else:
+        # Devel version from git
         ldir = "locale"
-gettext.install('watermark_app_gtk', localedir=ldir)
+
+if platform.system() == 'Windows':
+    # For Windows operating system do the translation based on the system registry
+    trans = gettext.translation("watermark_app_gtk", ldir, languages=[lang_code], fallback=True)
+    trans.install()
+else:
+    gettext.install('watermark_app_gtk', localedir=ldir)
 
 class ProgressDialog(Gtk.Dialog):
     def __init__(self, parent, title, max_value):
@@ -535,7 +552,9 @@ class WatermarkApp(Gtk.Window):
         self.set_default_font()
 
         if platform.system() == 'Windows':
-            pyi_splash.close()
+            if getattr(sys, 'frozen', False) and 'pyi_splash' in sys.modules:
+                if pyi_splash.is_alive():
+                    pyi_splash.close()
 
     def on_pdf_toggled(self, button):
         if button.get_active():
