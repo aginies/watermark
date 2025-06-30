@@ -4,10 +4,10 @@
 # Antoine Ginies <antoine@ginies.org>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1\n"
+"Project-Id-Version: 4.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 16:14+0200\n"
-"PO-Revision-Date: 2025-06-19 16:13+0300\n"
+"POT-Creation-Date: 2025-06-30 14:14+0200\n"
+"PO-Revision-Date: 2025-06-30 14:13+0300\n"
 "Last-Translator: Владислав Малышев <ma12@rambler.ru>\n"
 "Language-Team: none\n"
 "Language: ru\n"

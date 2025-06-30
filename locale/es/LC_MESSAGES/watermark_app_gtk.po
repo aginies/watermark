@@ -4,10 +4,10 @@
 # Antoine Ginies <antoine@ginies.org>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1\n"
+"Project-Id-Version: 4.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 16:14+0200\n"
-"PO-Revision-Date: 2025-06-16 16:14+0200\n"
+"POT-Creation-Date: 2025-06-30 14:14+0200\n"
+"PO-Revision-Date: 2025-06-30 14:14+0200\n"
 "Last-Translator: Antoine Ginies <antoine@ginies.org>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -96,16 +96,28 @@ msgid "Transparency"
 msgstr "Transparencia"
 
 #: watermark_app_gtk.py:413
-msgid "<b>* 0:</b> No transparency\n<b>* 100:</b> Invisible"
-msgstr "<b>* 0:</b> Sin transparencia\n<b>* 100:</b> Invisible"
+#, fuzzy
+msgid ""
+"Watermark transparency in the image\n"
+"<b>* 0:</b> No transparency\n"
+"<b>* 100:</b> Invisible"
+msgstr ""
+"<b>* 0:</b> Sin transparencia\n"
+"<b>* 100:</b> Invisible"
 
 #: watermark_app_gtk.py:422
 msgid "Density"
 msgstr "Densidad"
 
 #: watermark_app_gtk.py:428
-msgid "<b>* 0:</b> None\n<b>* 200:</b> Fill the image"
-msgstr "<b>* 0:</b> Ninguna\n<b>* 200:</b> Llenar la imagen"
+#, fuzzy
+msgid ""
+"How many watermark you want\n"
+"<b>* 0:</b> None\n"
+"<b>* 200:</b> Fill the image"
+msgstr ""
+"<b>* 0:</b> Ninguna\n"
+"<b>* 200:</b> Llenar la imagen"
 
 #: watermark_app_gtk.py:441
 msgid "Random Colors"
@@ -124,32 +136,50 @@ msgid "Include Date + Hour"
 msgstr "Incluir Fecha y Hora"
 
 #: watermark_app_gtk.py:466
-msgid "Add the Date and the Hour in the watermark, include that into the filename"
-msgstr "Agregar la fecha y la hora en la marca de agua, incluir eso en el nombre de archivo"
+msgid ""
+"Add the Date and the Hour in the watermark, include that into the filename"
+msgstr ""
+"Agregar la fecha y la hora en la marca de agua, incluir eso en el nombre de "
+"archivo"
 
 #: watermark_app_gtk.py:474
 msgid "Resize to"
 msgstr "Redimensionar a"
 
 #: watermark_app_gtk.py:476
-msgid "You can <b>resize</b> the original image to another size.\nThis option is not available if you choose PDF output format."
-msgstr "Puedes <b>redimensionar</b> la imagen original a otro tamaño.\nEsta opción no está disponible si eliges el formato de salida PDF."
+#, fuzzy
+msgid ""
+"You can <b>resize</b> the original image to another size.\n"
+" This option is not available if you choose PDF output format."
+msgstr ""
+"Puedes <b>redimensionar</b> la imagen original a otro tamaño.\n"
+"Esta opción no está disponible si eliges el formato de salida PDF."
 
 #: watermark_app_gtk.py:489
 msgid "JPEG (%)"
 msgstr "JPEG (%)"
 
 #: watermark_app_gtk.py:496
-msgid "<b>* 0:</b> None\n<b>* 100:</b> Full compression"
-msgstr "<b>* 0:</b> Ninguna\n<b>* 100:</b> Compresión completa"
+#, fuzzy
+msgid ""
+"Compression ratio of the generated JPEG Image(s)\n"
+"<b>* 0:</b> None\n"
+"<b>* 100:</b> Full compression"
+msgstr ""
+"<b>* 0:</b> Ninguna\n"
+"<b>* 100:</b> Compresión completa"
 
 #: watermark_app_gtk.py:499
 msgid "PDF"
 msgstr "PDF"
 
 #: watermark_app_gtk.py:500
-msgid "Save the image into a <b>PDF</b> format instead of JPEG.\nThere is no view of the watermarked file in PDF format."
-msgstr "Guardar la imagen en formato <b>PDF</b> en lugar de JPEG.\nNo hay vista previa del archivo con marca de agua en formato PDF."
+msgid ""
+"Save the image into a <b>PDF</b> format instead of JPEG.\n"
+"There is no view of the watermarked file in PDF format."
+msgstr ""
+"Guardar la imagen en formato <b>PDF</b> en lugar de JPEG.\n"
+"No hay vista previa del archivo con marca de agua en formato PDF."
 
 #: watermark_app_gtk.py:515
 msgid "Add Watermark"
@@ -165,15 +195,23 @@ msgstr "Elegir una Fuente TTF"
 
 #: watermark_app_gtk.py:694
 msgid "An error occurred, can't find the font path, please choose another one"
-msgstr "Ocurrió un error, no se puede encontrar la ruta de la fuente, por favor elige otra"
+msgstr ""
+"Ocurrió un error, no se puede encontrar la ruta de la fuente, por favor "
+"elige otra"
 
 #: watermark_app_gtk.py:832
 msgid "Watermark App Version 4.1"
 msgstr "Aplicación de Marca de Agua Versión 4.1"
 
 #: watermark_app_gtk.py:840
-msgid "This app add a Watermark to images\nOpen Source Project\nLicence GPL2"
-msgstr "Esta aplicación agrega una marca de agua a las imágenes\nProyecto de Código Abierto\nLicencia GPL2"
+msgid ""
+"This app add a Watermark to images\n"
+"Open Source Project\n"
+"Licence GPL2"
+msgstr ""
+"Esta aplicación agrega una marca de agua a las imágenes\n"
+"Proyecto de Código Abierto\n"
+"Licencia GPL2"
 
 #: watermark_app_gtk.py:852 watermark_app_gtk.py:868
 msgid "Close"
@@ -192,8 +230,10 @@ msgid "Please choose files"
 msgstr "Por favor, elige archivos"
 
 #: watermark_app_gtk.py:932
-#, python-brace-format
-msgid "... and more files selected ({how_many_files})."
+#, fuzzy, python-brace-format
+msgid ""
+"\n"
+"... and more files selected ({how_many_files})."
 msgstr "... y más archivos seleccionados ({how_many_files})."
 
 #: watermark_app_gtk.py:933 watermark_app_gtk.py:936
@@ -223,8 +263,12 @@ msgstr "Éxito"
 
 #: watermark_app_gtk.py:989
 #, python-brace-format
-msgid "Generated file(s):\n{self.all_images}"
-msgstr "Archivo(s) generado(s):\n{self.all_images}"
+msgid ""
+"Generated file(s):\n"
+"{self.all_images}"
+msgstr ""
+"Archivo(s) generado(s):\n"
+"{self.all_images}"
 
 #: watermark_app_gtk.py:1002
 #, python-brace-format
@@ -232,12 +276,13 @@ msgid "An error occurred during image processing: {err}"
 msgstr "Ocurrió un error durante el procesamiento de la imagen: {err}"
 
 #: watermark_app_gtk.py:1025
-#, python-brace-format
-msgid "Image size is {img.size}, will not rescale it to {resize_selected}"
-msgstr "El tamaño de la imagen es {img.size}, no se redimensionará a {resize_selected}"
+#, fuzzy, python-brace-format
+msgid "Image size is  {img.size}, will not rescale it to {resize_selected}"
+msgstr ""
+"El tamaño de la imagen es {img.size}, no se redimensionará a "
+"{resize_selected}"
 
 #: watermark_app_gtk.py:1111
 #, python-brace-format
 msgid "An error occurred while adding the watermark: {err}"
 msgstr "Ocurrió un error al agregar la marca de agua: {err}"
-
