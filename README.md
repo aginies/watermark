@@ -99,10 +99,10 @@ pyinstaller.exe --onefile --windowed watermark_app_gtk.py --name watermark --spl
 The **watermark.exe** file will be in the **dist** directory.
 To get a version with console debug, you need to remove the **--windowed** option from the **pyinstaller** command.
 
-## flathub app
+## Flathub / Windows
 
-[![Flathub Version](https://img.shields.io/badge/watermark-4.5-blue)](https://flathub.org/apps/io.github.aginies.watermark)
-[![Windows Version](https://img.shields.io/badge/watermark-4.5-blue)](https://github.com/aginies/watermark/releases/download/4.4/watermark_4.4.exe.zip)
+[![Flathub Version](https://img.shields.io/badge/Flathub_watermark-4.5-blue)](https://flathub.org/apps/io.github.aginies.watermark)
+[![Windows Version](https://img.shields.io/badge/Windows_watermark-4.5-blue)](https://github.com/aginies/watermark/releases/download/4.5/watermark_4.5.exe.zip)
 
 ### Stable version from source
 
