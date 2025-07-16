@@ -8,6 +8,7 @@ import platform
 import subprocess
 import gi
 import re
+import pathlib
 if platform.system() == 'Windows':
     import winreg
     if getattr(sys, 'frozen', False):
@@ -43,6 +44,26 @@ if platform.system() == 'Windows':
     trans.install()
 else:
     gettext.install('watermark_app_gtk', localedir=ldir)
+
+def get_xdg_pictures_dir():
+    """
+    Returns the path to the user's XDG Pictures directory.
+    This works correctly within a Flatpak with --filesystem=xdg-pictures
+    """
+    try:
+        result = subprocess.run(
+            ["xdg-user-dir", "PICTURES"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        path = result.stdout.strip()
+        if path:
+            pictures_dir = pathlib.Path(path)
+            if pictures_dir.is_absolute():
+                return pictures_dir
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
 
 class ProgressDialog(Gtk.Dialog):
     def __init__(self, parent, title, max_value):
@@ -855,7 +876,7 @@ class WatermarkApp(Gtk.Window):
 
     def about_dialog(self, widget):
         """ Create a custom dialog window for the About section with a clickable link"""
-        about_window = Gtk.Window(title=_("Watermark App Version 4.5"))
+        about_window = Gtk.Window(title=_("Watermark App Version 4.6"))
         about_window.set_default_size(400, 200)
         about_window.set_position(Gtk.WindowPosition.CENTER)
 
@@ -989,6 +1010,9 @@ class WatermarkApp(Gtk.Window):
 
         if not self.output_folder_path:
             self.default_output_dir = os.path.dirname(self.selected_files_path[0])
+            if is_running_under_flatpak():
+                # flatpak cause issue to save files, so forcing it to dir xdg pictures
+                self.default_output_dir = get_xdg_pictures_dir()
             if not is_running_under_flatpak():
                 self.output_filechooser_button.set_current_folder(self.default_output_dir)
         else:
