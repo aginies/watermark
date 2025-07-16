@@ -180,8 +180,20 @@ class ImageViewerWindow(Gtk.Window):
     def display_single_image(self, image_path):
         """Display a single image in the window"""
         # Load the image using GdkPixbuf
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
-        scaled_pixbuf = pixbuf.scale_simple(800, 600, GdkPixbuf.InterpType.HYPER)
+        try:
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
+        except GdkPixbuf.PixbufError as e:
+            print(f"Error loading image {image_path}: {e}")
+            return
+        window_width, window_height = self.get_size()
+        img_width = pixbuf.get_width()
+        img_height = pixbuf.get_height()
+        width_ratio = window_width / img_width
+        height_ratio = window_height / img_height
+        scale_factor = min(width_ratio, height_ratio)
+        new_width = int(img_width * scale_factor)
+        new_height = int(img_height * scale_factor)
+        scaled_pixbuf = pixbuf.scale_simple(new_width, new_height, GdkPixbuf.InterpType.HYPER)
 
         if hasattr(self, 'image_widget') and self.image_widget is not None:
             # Remove the old image widget from its container
