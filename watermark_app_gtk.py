@@ -888,7 +888,7 @@ class WatermarkApp(Gtk.Window):
 
     def about_dialog(self, widget):
         """ Create a custom dialog window for the About section with a clickable link"""
-        about_window = Gtk.Window(title=_("Watermark App Version 4.6"))
+        about_window = Gtk.Window(title=_("Watermark App Version 4.7"))
         about_window.set_default_size(400, 200)
         about_window.set_position(Gtk.WindowPosition.CENTER)
 
