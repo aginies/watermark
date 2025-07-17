@@ -92,7 +92,7 @@ msgid "Watermark Angle in the image (positive and negative)"
 msgstr ""
 
 #: watermark_app_gtk.py:466
-msgid "Transparency"
+msgid "Transparency (%)"
 msgstr ""
 
 #: watermark_app_gtk.py:473
@@ -103,14 +103,14 @@ msgid ""
 msgstr ""
 
 #: watermark_app_gtk.py:482
-msgid "Density"
+msgid "Density (%)"
 msgstr ""
 
 #: watermark_app_gtk.py:488
 msgid ""
 "How many watermark you want\n"
 "<b>* 0:</b> None\n"
-"<b>* 200:</b> Fill the image"
+"<b>* 100:</b> Fill the image"
 msgstr ""
 
 #: watermark_app_gtk.py:501
@@ -141,7 +141,7 @@ msgstr ""
 #: watermark_app_gtk.py:536
 msgid ""
 "You can <b>resize</b> the original image to another size.\n"
-" This option is not available if you choose PDF output format."
+"This option is not available if you choose PDF output format."
 msgstr ""
 
 #: watermark_app_gtk.py:549
@@ -162,7 +162,7 @@ msgstr ""
 #: watermark_app_gtk.py:560
 msgid ""
 "Save the image into a <b>PDF</b> format instead of JPEG.\n"
-"There is no view of the watermarked file in PDF format."
+"There is <b>No view</b> of the watermarked file <b>in PDF</b> format."
 msgstr ""
 
 #: watermark_app_gtk.py:575
