@@ -92,8 +92,9 @@ msgid "Watermark Angle in the image (positive and negative)"
 msgstr "Ángulo de la marca de agua en la imagen (positivo y negativo)"
 
 #: watermark_app_gtk.py:466
-msgid "Transparency"
-msgstr "Transparencia"
+#, fuzzy
+msgid "Transparency (%)"
+msgstr "Transparencia (%)"
 
 #: watermark_app_gtk.py:473
 #, fuzzy
@@ -106,18 +107,19 @@ msgstr ""
 "<b>* 100:</b> Invisible"
 
 #: watermark_app_gtk.py:482
-msgid "Density"
-msgstr "Densidad"
+#, fuzzy
+msgid "Density (%)"
+msgstr "Densidad (%)"
 
 #: watermark_app_gtk.py:488
 #, fuzzy
 msgid ""
 "How many watermark you want\n"
 "<b>* 0:</b> None\n"
-"<b>* 200:</b> Fill the image"
+"<b>* 100:</b> Fill the image"
 msgstr ""
 "<b>* 0:</b> Ninguna\n"
-"<b>* 200:</b> Llenar la imagen"
+"<b>* 100:</b> Llenar la imagen"
 
 #: watermark_app_gtk.py:501
 msgid "Random Colors"
@@ -150,10 +152,10 @@ msgstr "Redimensionar a"
 #, fuzzy
 msgid ""
 "You can <b>resize</b> the original image to another size.\n"
-" This option is not available if you choose PDF output format."
+"This option is not available if you choose PDF output format."
 msgstr ""
 "Puedes <b>redimensionar</b> la imagen original a otro tamaño.\n"
-"Esta opción no está disponible si eliges el formato de salida PDF."
+"Esta opción <b>no</b> está disponible si eliges el formato de <b>salida PDF</b>."
 
 #: watermark_app_gtk.py:549
 msgid "JPEG (%)"
@@ -174,9 +176,10 @@ msgid "PDF"
 msgstr "PDF"
 
 #: watermark_app_gtk.py:560
+#, fuzzy
 msgid ""
 "Save the image into a <b>PDF</b> format instead of JPEG.\n"
-"There is no view of the watermarked file in PDF format."
+"There is <b>No view</b> of the watermarked file <b>in PDF</b> format."
 msgstr ""
 "Guardar la imagen en formato <b>PDF</b> en lugar de JPEG.\n"
 "No hay vista previa del archivo con marca de agua en formato PDF."

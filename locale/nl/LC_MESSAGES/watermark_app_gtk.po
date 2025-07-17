@@ -93,8 +93,9 @@ msgid "Watermark Angle in the image (positive and negative)"
 msgstr "Hoek van het watermerk (positief en negatief)"
 
 #: watermark_app_gtk.py:466
-msgid "Transparency"
-msgstr "Doorzichtigheid"
+#, fuzzy
+msgid "Transparency (%)"
+msgstr "Doorzichtigheid (%)"
 
 #: watermark_app_gtk.py:473
 msgid ""
@@ -107,18 +108,20 @@ msgstr ""
 "<b>* 100:</b> onzichtbaar"
 
 #: watermark_app_gtk.py:482
-msgid "Density"
-msgstr "Hoeveelheid"
+#, fuzzy
+msgid "Density (%)"
+msgstr "Hoeveelheid (%)"
 
 #: watermark_app_gtk.py:488
+#, fuzzy
 msgid ""
 "How many watermark you want\n"
 "<b>* 0:</b> None\n"
-"<b>* 200:</b> Fill the image"
+"<b>* 100:</b> Fill the image"
 msgstr ""
 "Hoeveel watermerken er moeten zijn\n"
 "<b>* 0:</b> geen\n"
-"<b>* 200:</b> afbeelding opvullen"
+"<b>* 100:</b> afbeelding opvullen"
 
 #: watermark_app_gtk.py:501
 msgid "Random Colors"
@@ -146,12 +149,13 @@ msgid "Resize to"
 msgstr "Grootte aanpassen"
 
 #: watermark_app_gtk.py:536
+#, fuzzy
 msgid ""
 "You can <b>resize</b> the original image to another size.\n"
-" This option is not available if you choose PDF output format."
+"This option is not available if you choose PDF output format."
 msgstr ""
 "U kunt de oorspronkelijke afmetingen <b>aanpassen</b>.\n"
-" Let op: deze optie is niet beschikbaar als u voor pdf-bestand hebt gekozen."
+" Let op: deze optie is <b>niet</b> beschikbaar als u voor <b>pdf-bestand</b> hebt gekozen."
 
 #: watermark_app_gtk.py:549
 msgid "JPEG (%)"
@@ -172,9 +176,10 @@ msgid "PDF"
 msgstr "Pdf"
 
 #: watermark_app_gtk.py:560
+#, fuzzy
 msgid ""
 "Save the image into a <b>PDF</b> format instead of JPEG.\n"
-"There is no view of the watermarked file in PDF format."
+"There is <b>No view</b> of the watermarked file <b>in PDF</b> format."
 msgstr ""
 "Bewaar de afbeelding als <b>pdf</b>-bestand in plaats van als jpeg.\n"
 "Let op: het watermerk is hierdoor niet zichtbaar."

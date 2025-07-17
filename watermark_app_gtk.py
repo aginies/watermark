@@ -315,7 +315,7 @@ class WatermarkApp(Gtk.Window):
         self.font_size = 20
         self.font_base_name = None
         self.watermak_prefix = ""
-        self.fili_density = 140
+        self.fili_density = 70
         self.rotation_angle = 30
         self.selected_files_path = []
         self.all_images = []
@@ -463,7 +463,7 @@ class WatermarkApp(Gtk.Window):
 
         # Font Transparency
         transparency_hbox = Gtk.Box(spacing=3)
-        transparency_label = Gtk.Label(label=_("Transparency"))
+        transparency_label = Gtk.Label(label=_("Transparency (%)"))
         adjustment_transparency = Gtk.Adjustment(value=self.font_transparency, lower=0,
                                                  upper=100, step_increment=1, page_increment=10)
         self.transparency_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
@@ -479,13 +479,13 @@ class WatermarkApp(Gtk.Window):
 
         # Font density
         density_hbox = Gtk.Box(spacing=3)
-        density_label = Gtk.Label(label=_("Density"))
+        density_label = Gtk.Label(label=_("Density (%)"))
         adjustment_density = Gtk.Adjustment(value=self.fili_density, lower=1,
-                                            upper=200, step_increment=1, page_increment=10)
+                                            upper=100, step_increment=1, page_increment=10)
         self.text_density_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
                                             adjustment=adjustment_density)
         self.text_density_scale.set_digits(0)
-        self.text_density_scale.set_tooltip_markup(_("How many watermark you want\n<b>* 0:</b> None\n<b>* 200:</b> Fill the image"))
+        self.text_density_scale.set_tooltip_markup(_("How many watermark you want\n<b>* 0:</b> None\n<b>* 100:</b> Fill the image"))
         self.text_density_scale.set_inverted(False)
         self.text_density_scale.connect("value-changed", self.on_rotation_density_changed)
         button_size_group.add_widget(self.text_density_scale)
@@ -533,7 +533,7 @@ class WatermarkApp(Gtk.Window):
         self.resize_hbox = Gtk.Box(spacing=3)
         resize_label = Gtk.Label(label=_("Resize to"))
         self.list_size = Gtk.ComboBoxText()
-        self.list_size.set_tooltip_markup(_("You can <b>resize</b> the original image to another size.\n This option is not available if you choose PDF output format."))
+        self.list_size.set_tooltip_markup(_("You can <b>resize</b> the original image to another size.\nThis option is not available if you choose PDF output format."))
         elements = ["None", "320", "640", "800", "1024", "1280", "1600", "2048",]
         for text in elements:
             self.list_size.append_text(text)
@@ -557,7 +557,7 @@ class WatermarkApp(Gtk.Window):
         self.compression_scale.connect("value-changed", self.on_compression_changed)
         button_size_group.add_widget(self.compression_scale)
         self.pdf_check = Gtk.CheckButton(label=_("PDF"))
-        self.pdf_check.set_tooltip_markup(_("Save the image into a <b>PDF</b> format instead of JPEG.\nThere is no view of the watermarked file in PDF format."))
+        self.pdf_check.set_tooltip_markup(_("Save the image into a <b>PDF</b> format instead of JPEG.\nThere is <b>No view</b> of the watermarked file <b>in PDF</b> format."))
         self.pdf_check.connect("toggled", self.on_pdf_toggled)
         self.pdf_check.set_active(False)
         self.compression_scale.set_sensitive(True)
@@ -888,7 +888,7 @@ class WatermarkApp(Gtk.Window):
 
     def about_dialog(self, widget):
         """ Create a custom dialog window for the About section with a clickable link"""
-        about_window = Gtk.Window(title=_("Watermark App Version 4.7"))
+        about_window = Gtk.Window(title=_("Watermark App Version 4.8"))
         about_window.set_default_size(400, 200)
         about_window.set_position(Gtk.WindowPosition.CENTER)
 
@@ -1102,7 +1102,7 @@ class WatermarkApp(Gtk.Window):
                 text_height = bbox[3] - bbox[1]
 
                 dpi_from_box = int(self.text_density_scale.get_value())
-                dpi = 201 - dpi_from_box
+                dpi = 201 - dpi_from_box * 2
                 interval_pixels_y = int(dpi)
                 used_positions = set()
 

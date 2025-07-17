@@ -95,8 +95,9 @@ msgid "Watermark Angle in the image (positive and negative)"
 msgstr "Угол наклона водяного знака (положительный и отрицательный)"
 
 #: watermark_app_gtk.py:466
-msgid "Transparency"
-msgstr "Прозрачность"
+#, fuzzy
+msgid "Transparency (%)"
+msgstr "Прозрачность (%)"
 
 #: watermark_app_gtk.py:473
 msgid ""
@@ -109,18 +110,20 @@ msgstr ""
 "<b>* 100:</b> Невидим"
 
 #: watermark_app_gtk.py:482
-msgid "Density"
-msgstr "Плотность"
+#, fuzzy
+msgid "Density (%)"
+msgstr "Плотность (%)"
 
 #: watermark_app_gtk.py:488
+#, fuzzy
 msgid ""
 "How many watermark you want\n"
 "<b>* 0:</b> None\n"
-"<b>* 200:</b> Fill the image"
+"<b>* 100:</b> Fill the image"
 msgstr ""
 "Сколько водяных знаков вы хотите получить\n"
 "<b>* 0:</b> Ни одного\n"
-"<b>* 200:</b> Заполнить изображение"
+"<b>* 100:</b> Заполнить изображение"
 
 #: watermark_app_gtk.py:501
 msgid "Random Colors"
@@ -148,12 +151,13 @@ msgid "Resize to"
 msgstr "Изменить размер до"
 
 #: watermark_app_gtk.py:536
+#, fuzzy
 msgid ""
 "You can <b>resize</b> the original image to another size.\n"
-" This option is not available if you choose PDF output format."
+"This option is not available if you choose PDF output format."
 msgstr ""
 "Вы можете <b> изменить размер </b> исходное изображение до другого размера.\n"
-"Эта опция недоступна, если вы выберете формат вывода PDF."
+"Эта опция <b>недоступна</b>, если вы выберете формат вывода <b>PDF</b>."
 
 #: watermark_app_gtk.py:549
 msgid "JPEG (%)"
@@ -174,9 +178,10 @@ msgid "PDF"
 msgstr ""
 
 #: watermark_app_gtk.py:560
+#, fuzzy
 msgid ""
 "Save the image into a <b>PDF</b> format instead of JPEG.\n"
-"There is no view of the watermarked file in PDF format."
+"There is <b>No view</b> of the watermarked file <b>in PDF</b> format."
 msgstr ""
 "Сохраните изображение в формате <b>PDF</b> вместо JPEG.\n"
 "Нет просмотра файла с водяным знаком в формате PDF."
