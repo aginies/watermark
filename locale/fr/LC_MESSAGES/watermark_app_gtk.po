@@ -103,6 +103,7 @@ msgid ""
 "<b>* 0:</b> No transparency\n"
 "<b>* 100:</b> Invisible"
 msgstr ""
+"Transparence du Filigrane dans l'image\n"
 "<b>* 0 :</b> Aucune transparence\n"
 "<b>* 100 :</b> Invisible"
 
