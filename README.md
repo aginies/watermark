@@ -31,15 +31,16 @@ This is only available for Linux and Windows now, a MacOS version should be poss
 
 # Python requirements
 
-This app is in Python GTK3, and is compatible with very old python3.6.
+This app is in Python GTK3.
 
 * pillow
 * gobject
+* PyMuPDF
 
 # watermark_app_gtk.py
 
 Python GTK3 version.
-* Add watermark to multiple images
+* Add watermark to multiple images or PDF
 * List of selected images
 * Multiple Image viewer
 * Default save directory is that of the first image
@@ -57,11 +58,11 @@ Python GTK3 version.
 
 **FR**:
 Script en Python GTK3.
-* Ajout filigrane sur de multiple images
+* Ajout filigrane sur de multiple images ou PDF
 * Liste des images selectionnées
 * Visualiseur d'images
 * Répertoire de sauvegarde par défaut est celui de la première image
-* Langues: EN, FR, ES
+* Langues: EN, FR, ES, NL, RU
 * Expert mode: 
   * séléction font
   * couleur font ou via le hasard
@@ -101,8 +102,8 @@ To get a version with console debug, you need to remove the **--windowed** optio
 
 ## Flathub / Windows
 
-[![Flathub Version](https://img.shields.io/badge/Flathub_watermark-4.8-blue)](https://flathub.org/apps/io.github.aginies.watermark)
-[![Windows Version](https://img.shields.io/badge/Windows_watermark-4.8-blue)](https://github.com/aginies/watermark/releases/download/4.8/watermark_4.8.exe.zip)
+[![Flathub Version](https://img.shields.io/badge/Flathub_watermark-5.0-blue)](https://flathub.org/apps/io.github.aginies.watermark)
+[![Windows Version](https://img.shields.io/badge/Windows_watermark-5.0-blue)](https://github.com/aginies/watermark/releases/download/5.0/watermark_5.0.exe.zip)
 
 ### Stable version from source
 

@@ -9,6 +9,10 @@ import subprocess
 import gi
 import re
 import pathlib
+import fitz
+import uuid
+import shutil
+
 if platform.system() == 'Windows':
     import winreg
     if getattr(sys, 'frozen', False):
@@ -68,7 +72,6 @@ def get_xdg_pictures_dir():
 class ProgressDialog(Gtk.Dialog):
     def __init__(self, parent, title, max_value):
         Gtk.Dialog.__init__(self, title, parent, 0)
-                            #(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
         self.set_default_size(300, 100)
 
         self.progress = Gtk.ProgressBar()
@@ -182,9 +185,10 @@ class ImageViewerWindow(Gtk.Window):
         # Load the image using GdkPixbuf
         try:
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
-        except GdkPixbuf.PixbufError as e:
-            print(f"Error loading image {image_path}: {e}")
+        except GdkPixbuf.PixbufError as err:
+            print(f"Error loading image {image_path}: {err}")
             return
+
         window_width, window_height = self.get_size()
         img_width = pixbuf.get_width()
         img_height = pixbuf.get_height()
@@ -328,6 +332,8 @@ class WatermarkApp(Gtk.Window):
         self.pdf_choosen = False
         self.init_real_size = 20
         self.real_fsize = None
+        self.pdf_original_dirname = None
+        #self.pdf_needs_merge = False
 
         # Create main vertical box container
         self.vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
@@ -382,7 +388,7 @@ class WatermarkApp(Gtk.Window):
 
         # File selection horizontal box (label + file chooser button)
         file_hbox = Gtk.Box(spacing=3)
-        file_label_text = _("Select Image File(s)")
+        file_label_text = _("Select Image or PDF File(s)")
         file_label = Gtk.Label(label=file_label_text, halign=Gtk.Align.START)
         self.file_chooser_button = Gtk.Button(label=_("Choose Files"))
         self.file_chooser_button.connect("clicked", self.on_files_clicked)
@@ -588,6 +594,58 @@ class WatermarkApp(Gtk.Window):
             if getattr(sys, 'frozen', False) and 'pyi_splash' in sys.modules:
                 if pyi_splash.is_alive():
                     pyi_splash.close()
+
+    def check_if_pdf(self, file_path_str: str) -> bool:
+        """ Checks if a file path has a '.pdf' extension using pathlib.Path.suffix."""
+        file_path = pathlib.Path(file_path_str)
+        return file_path.suffix.lower() == '.pdf'
+
+    def convert_pdf_to_images(self, pdf_path, fmt, dpi):
+        """ Converts each page of a PDF file to an image using PyMuPDF. """
+        random = str(uuid.uuid4())
+        tmp_output_folder = os.path.join("/tmp/DIR_converted_pdf_images", random)
+        if not os.path.exists(tmp_output_folder):
+            os.makedirs(tmp_output_folder)
+            print(f"Created output folder: {tmp_output_folder}")
+
+        try:
+            original_filename_base = os.path.splitext(os.path.basename(pdf_path))[0]
+            # We need to know where the PDF is taken from
+            self.pdf_original_dirname = os.path.dirname(pdf_path)
+            doc = fitz.open(pdf_path)
+            print(f"Opened PDF: {pdf_path}")
+
+            zoom = dpi / 72
+            matrix = fitz.Matrix(zoom, zoom)
+            ind = 0
+            win = Gtk.Window()
+            p_dialog = ProgressDialog(win, ("Preparing the PDF"), len(doc))
+            for page_num in range(len(doc)):
+                page = doc.load_page(page_num)  # Load the specific page
+                print(f"Processing page {page_num + 1}/{len(doc)}")
+                pix = page.get_pixmap(matrix=matrix)
+                image_filename = os.path.join(tmp_output_folder, f"{original_filename_base}_page_{page_num + 1}.{fmt}")
+                pix.save(image_filename)
+                print(f"Saved {image_filename}")
+                ind = ind + 1
+                p_dialog.update_progress(ind)
+                self.selected_files_path.append(image_filename)
+
+            # if the pdf contains multiple page we will re-assemble it
+            #if len(doc) > 1:
+            #    prin("Multi page PDF")
+            #    self.pdf_needs_merge = True
+
+            p_dialog.close();
+            doc.close()
+            print(f"\nSuccessfully converted '{pdf_path}' to images in '{tmp_output_folder}' using PyMuPDF.")
+            # remove tmp dir
+            #shutil.rmtree(output_folder)
+
+        except fitz.FileNotFoundError:
+            print(f"Error: PDF file not found at '{pdf_path}'")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
 
     def on_pdf_toggled(self, button):
         if button.get_active():
@@ -888,7 +946,7 @@ class WatermarkApp(Gtk.Window):
 
     def about_dialog(self, widget):
         """ Create a custom dialog window for the About section with a clickable link"""
-        about_window = Gtk.Window(title=_("Watermark App Version 4.8"))
+        about_window = Gtk.Window(title=_("Watermark App Version 5.0"))
         about_window.set_default_size(400, 200)
         about_window.set_position(Gtk.WindowPosition.CENTER)
 
@@ -896,7 +954,7 @@ class WatermarkApp(Gtk.Window):
         about_window.add(vbox)
 
         info_text = _(
-            "This app add a Watermark to images\n"
+            "This app add a Watermark to images or PDF\n"
             "Open Source Project\nLicence GPL2"
         )
 
@@ -933,7 +991,7 @@ class WatermarkApp(Gtk.Window):
         app = ImageViewerWindow()
         app.load_images(image_path)
 
-    def add_images_filters(self):
+    def add_selection_filters(self):
         filter_img = Gtk.FileFilter()
         filter_img.set_name(_("Image Files"))
         filter_img.add_mime_type("image/png")
@@ -950,6 +1008,7 @@ class WatermarkApp(Gtk.Window):
         filter_img.add_pattern("*.tiff")
         filter_img.add_pattern("*.tif")
         filter_img.add_pattern("*.webp")
+        filter_img.add_pattern("*.pdf")
         return filter_img
 
     def on_files_clicked(self, widget):
@@ -962,11 +1021,11 @@ class WatermarkApp(Gtk.Window):
 
         dialog.set_select_multiple(True)
 
-        # Add filters
-        image_filter = self.add_images_filters()
-        print(f"Filter name: {image_filter.get_name()}")
-        dialog.add_filter(image_filter)
-        dialog.set_filter(image_filter)
+        # Add filters (images and pdf)
+        file_filter = self.add_selection_filters()
+        print(f"Filter name: {file_filter.get_name()}")
+        dialog.add_filter(file_filter)
+        dialog.set_filter(file_filter)
         filters = dialog.list_filters()
         for lfil, fil in enumerate(filters):
             print(f"Listed Filter {lfil}: {fil.get_name()}")
@@ -977,7 +1036,7 @@ class WatermarkApp(Gtk.Window):
             file_paths = dialog.get_files()
             self.selected_files_path = [file.get_path() for file in file_paths]
             self.update_file_button_text()
-            print("Selected files:", self.selected_files_path)
+            print("Selected file(s):", self.selected_files_path)
             self.files_selected_hbox.show()
             for file in file_paths:
                 print(file.get_path())
@@ -1003,6 +1062,12 @@ class WatermarkApp(Gtk.Window):
             warning_dialog.show()
             return
 
+        for image_path in self.selected_files_path:
+            if self.check_if_pdf(image_path):
+                # remove the pdf from the list and create images
+                self.convert_pdf_to_images(image_path, "jpg", 250)
+                self.selected_files_path.remove(image_path)
+
         watermark_text = self.watermark_entry.get_text()
         if not watermark_text:
             warning_dialog = WarningDialog(
@@ -1021,7 +1086,10 @@ class WatermarkApp(Gtk.Window):
             return
 
         if not self.output_folder_path:
-            self.default_output_dir = os.path.dirname(self.selected_files_path[0])
+            if self.pdf_original_dirname is not None:
+                self.default_output_dir = self.pdf_original_dirname
+            else:
+                self.default_output_dir = os.path.dirname(self.selected_files_path[0])
             if is_running_under_flatpak():
                 # flatpak cause issue to save files, so forcing it to dir xdg pictures
                 self.default_output_dir = get_xdg_pictures_dir()
